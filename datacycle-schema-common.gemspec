@@ -6,7 +6,7 @@ version = File.read(File.expand_path('./GEM_VERSION', __dir__)).strip
 Gem::Specification.new do |s|
   s.name        = 'datacycle-schema-common'
   s.version     = version
-  s.authors     = ['Manuel Mitterer', 'Martin Oehzelt', 'Benjamin Preisig', 'Patrick Rainer', 'Johannes Zlattinger']
+  s.authors     = ['dataCycle GmbH']
   s.email       = ['office@datacycle.info']
   s.homepage    = 'https://datacycle.info'
   s.summary     = 'dataCycle SCHEMA Common'
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.require_path = 'lib'
 
-  s.required_ruby_version = '~> 2.7.1'
+  s.required_ruby_version = '~> 3.2.2'
 
   s.metadata['rubygems_mfa_required'] = 'true'
 end
