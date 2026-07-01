@@ -1,0 +1,182 @@
+---
+- :data:
+    :name: ImageObject
+    :type: object
+    :content_type: entity
+    :schema_ancestors:
+      - CreativeWork
+      - MediaObject
+      - ImageObject
+    :features:
+      :creatable:
+        :allowed: true
+      :translatable:
+        :allowed: true
+    :properties:
+      :id:
+        :label: id
+        :type: key
+      :title:
+        :type: mixin
+        :name: title
+      :asset:
+        :label: Datei
+        :type: asset
+        :asset_type: image
+        :visible:
+          - show
+          - edit
+        :ui:
+          :edit:
+            :readonly: true
+      :content_url:
+        :label: Datei URL
+        :type: string
+        :storage_location: value
+        :compute:
+          :module: Asset
+          :method: content_url
+          :parameters:
+            - asset
+        :visible:
+          - api
+      :thumbnail_url:
+        :label: Thumbnail URL
+        :storage_location: value
+        :type: string
+        :compute:
+          :module: Image
+          :method: thumbnail_url
+          :parameters:
+            - asset
+        :visible:
+          - api
+          - show
+        :ui:
+          :show:
+            :partial: preview_image
+      :web_url:
+        :label: Web URL
+        :storage_location: value
+        :type: string
+        :compute:
+          :module: Image
+          :method: web_url
+          :parameters:
+            - asset
+        :visible: false
+      :width:
+        :label: Breite
+        :storage_location: value
+        :type: number
+        :compute:
+          :module: Image
+          :method: width
+          :parameters:
+            - asset
+        :ui:
+          :show:
+            :options:
+              :data-unit: px
+          :edit:
+            :disabled: true
+        :api:
+          :partial: property_value
+          :type: QuantitativeValue
+          :unit_text: pixel
+          :unit_code: E37
+          :transformation:
+            :method: nest
+            :name: width
+        :advanced_search: true
+      :height:
+        :label: Höhe
+        :type: number
+        :storage_location: value
+        :compute:
+          :module: Image
+          :method: height
+          :parameters:
+            - asset
+        :ui:
+          :show:
+            :options:
+              :data-unit: px
+          :edit:
+            :disabled: true
+        :api:
+          :partial: property_value
+          :type: QuantitativeValue
+          :unit_text: pixel
+          :unit_code: E37
+          :transformation:
+            :method: nest
+            :name: height
+        :advanced_search: true
+      :caption:
+        :label: Beschriftung
+        :type: string
+        :storage_location: translated_value
+        :search: true
+        :advanced_search: true
+      :copyright_notice:
+        :label: Copyright
+        :type: string
+        :storage_location: translated_value
+        :search: true
+        :advanced_search: true
+      :description:
+        :label: Beschreibung (ALT-Label)
+        :type: string
+        :storage_location: translated_value
+        :search: true
+        :ui:
+          :edit:
+            :type: text_editor
+            :options:
+              :data-size: basic
+        :advanced_search: true
+      :file_format:
+        :label: Dateiformat
+        :storage_location: value
+        :type: string
+        :compute:
+          :module: Asset
+          :method: file_format
+          :parameters:
+            - asset
+            - content_url
+        :visible:
+          - api
+          - show
+        :api:
+          :name: encodingFormat
+      :content_size:
+        :label: Dateigröße
+        :storage_location: value
+        :type: number
+        :compute:
+          :module: Asset
+          :method: file_size
+          :parameters:
+            - asset
+        :advanced_search: true
+        :visible:
+          - api
+          - show
+      :upload_date:
+        :label: Hochgeladen am
+        :type: date
+        :storage_location: value
+        :ui:
+          :edit:
+            :options:
+              :placeholder: tt.mm.jjjj
+              :class: daterange
+        :default_value:
+          module: DataCycleCore::Utility::DefaultValue::Date
+          method: beginning_of_day
+        :advanced_search: true
+      :meta_data:
+        :type: mixin
+        :name: meta_data

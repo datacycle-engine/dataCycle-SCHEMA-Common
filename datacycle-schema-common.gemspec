@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.require_path = 'lib'
 
-  s.required_ruby_version = '~> 3.2.2'
+  s.required_ruby_version = '>= 3.3'
 
   s.metadata['rubygems_mfa_required'] = 'true'
 end

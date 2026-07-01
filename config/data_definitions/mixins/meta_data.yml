@@ -3,30 +3,36 @@
     :name: meta_data
     :type: mixin
     :properties:
-      :date_created:
-        :label: Erstellungsdatum
-        :type: datetime
-        :storage_location: value
+      :slug:
+        :label: slug
+        :storage_location: column
+        :type: slug
+        :condition:
+          :not_content_type?: embedded
+        :default_value:
+          module: DataCycleCore::Utility::DefaultValue::Slug
+          method: generate_slug
+        :advanced_search: true
+        :search: true
+        :global: true
         :ui:
-         :edit:
-           disabled: true
-         :show:
-           :type: date
-      :date_modified:
-        :label: Änderungsdatum
-        :type: datetime
-        :storage_location: value
-        :ui:
-         :edit:
-           disabled: true
-         :show:
-           :type: date
-      :date_deleted:
-        :label: Löschdatum
-        :type: datetime
-        :storage_location: value
-        :ui:
-         :edit:
-           disabled: true
-         :show:
-           :type: date
+          :bulk_edit:
+            :disabled: true
+        :api:
+          :name: dc:slug
+      :schema_types:
+        :label: SchemaTypes
+        :type: classification
+        :tree_label: SchemaTypes
+        :condition:
+          :template_key?: schema_ancestors
+          :not_content_type?: embedded
+        :default_value:
+          :module: DataCycleCore::Utility::DefaultValue::Classification
+          :method: schema_types
+        :visible: false
+      :dummy:
+        :type: string
+        :storage_location: translated_value
+        :default_value: do_not_show
+        :visible: false

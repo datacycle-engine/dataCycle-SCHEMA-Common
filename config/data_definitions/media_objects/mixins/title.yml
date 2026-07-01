@@ -1,0 +1,22 @@
+---
+- :data:
+    :name: title
+    :type: mixin
+    :properties:
+      :name:
+        :label: Titel
+        :type: string
+        :storage_location: translated_value
+        :search: true
+        :validations:
+          :required: true
+        :ui:
+          :show:
+            :content_area: none
+        :api:
+          :partial: media_title
+        :default_value:
+          :module: DataCycleCore::Utility::DefaultValue::Asset
+          :method: filename_to_string
+          :parameters:
+            - asset

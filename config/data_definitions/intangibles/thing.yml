@@ -1,0 +1,44 @@
+---
+- :data:
+    :name: Thing
+    :type: object
+    :schema_ancestors:
+      - Thing
+    :content_type: entity
+    :features:
+      :translatable:
+        :allowed: true
+      :creatable:
+        :allowed: true
+    :properties:
+      :id:
+        :label: id
+        :type: key
+      :name:
+        :label: Titel
+        :type: string
+        :storage_location: translated_value
+        :search: true
+        :validations:
+          :required: true
+        :ui:
+          :show:
+            :content_area: none
+      :description:
+        :label: Beschreibung
+        :type: string
+        :storage_location: translated_value
+        :search: true
+        :ui:
+          :edit:
+            :type: text_editor
+            :options:
+              :data-size: full
+        :advanced_search: true
+      :image:
+        :label: Bilder
+        :type: linked
+        :template_name: ImageObject
+      :meta_data:
+        :type: mixin
+        :name: meta_data

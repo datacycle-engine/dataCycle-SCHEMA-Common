@@ -1,0 +1,61 @@
+---
+- :data:
+    :name: WebSite
+    :type: object
+    :schema_ancestors:
+      - CreativeWork
+      - WebSite
+    :content_type: entity
+    :features:
+      :creatable:
+        :allowed: true
+      :translatable:
+        :allowed: true
+    :properties:
+      :id:
+        :label: id
+        :type: key
+      :title:
+        :type: mixin
+        :name: title
+      :headline:
+        :label: Headline
+        :type: string
+        :storage_location: translated_value
+        :search: true
+      :description:
+        :label: Teasertext
+        :type: string
+        :storage_location: translated_value
+        :search: true
+        :ui:
+          :edit:
+            :type: text_editor
+            :options:
+              :data-size: basic
+        :advanced_search: true
+      :image:
+        :label: Bilder
+        :type: linked
+        :template_name: ImageObject
+      :content_block:
+        :label: Inhaltsblock
+        :type: embedded
+        :template_name: ContentBlock
+        :api:
+          :name: "dc:contentBlock"
+      :main_menu:
+        :label: Hauptmenü
+        :type: embedded
+        :template_name: SiteNavigationElement
+        :api:
+          :name: "dc:mainMenu"
+      :footer_menu:
+        :label: Footermenü
+        :type: embedded
+        :template_name: SiteNavigationElement
+        :api:
+          :name: "dc:footerMenu"
+      :meta_data:
+        :type: mixin
+        :name: meta_data

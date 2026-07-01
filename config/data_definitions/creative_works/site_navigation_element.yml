@@ -1,0 +1,39 @@
+---
+- :data:
+    :name: SiteNavigationElement
+    :type: object
+    :schema_ancestors:
+      - CreativeWork
+      - WebPageElement
+      - SiteNavigationElement
+    :content_type: embedded
+    :properties:
+      :id:
+        :label: id
+        :type: key
+      :name:
+        :label: Überschrift
+        :type: string
+        :storage_location: translated_value
+        :search: true
+      :linked_thing:
+        :label: WebPage
+        :type: linked
+        :stored_filter:
+          - :with_classification_paths:
+              - SchemaTypes > CreativeWork > WebPage
+        :validations:
+          :min: 1
+          :max: 1
+        :api:
+          :v4:
+            :name: "dc:linkedThing"
+      :sub_menu:
+        :label: Submenü
+        :type: embedded
+        :template_name: SiteNavigationElement
+        :api:
+          :name: "dc:children"
+      :meta_data:
+        :type: mixin
+        :name: meta_data
