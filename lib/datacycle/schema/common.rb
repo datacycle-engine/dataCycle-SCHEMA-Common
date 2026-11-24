@@ -3,6 +3,9 @@
 module Datacycle
   module Schema
     module Common
+      class Engine < ::Rails::Engine
+      end
+
       GEM_ROOT = File.expand_path("#{File.dirname(__FILE__)}/../../..")
       
       def self.templates
